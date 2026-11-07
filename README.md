@@ -140,3 +140,4 @@ Running on the phone from Termux:
 Typing a prompt and getting an image:
 
 <p align="center"><img src="images/usage.png" alt="Prompt and generated image in Termux" width="350"></p>
+<p align="center"><img src="images/diff_15b0d0c6.jpg" width="350"></p>
