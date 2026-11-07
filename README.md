@@ -133,7 +133,7 @@ Every run prints the peak RAM of the process, the peak NPU shared memory, and ho
 * Time per image: add your number here
 * Peak RAM: add your number here
 
-Running on the Snapdragon Hexagon NPU on phone:
+Running the Dragon Inference on Snapdragon Hexagon NPU available on phone:
 
 <p align="center"><img src="images/working.png" alt="Dragon Diffusion running on the phone" width="550"></p>
 
