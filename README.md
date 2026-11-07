@@ -135,7 +135,7 @@ Every run prints the peak RAM of the process, the peak NPU shared memory, and ho
 
 Running on the phone from Termux:
 
-<p align="center"><img src="images/working.png" alt="Dragon Diffusion running on the phone" width="350"></p>
+<p align="center"><img src="images/working.png" alt="Dragon Diffusion running on the phone" width="550"></p>
 
 Typing a prompt and getting an image:
 
