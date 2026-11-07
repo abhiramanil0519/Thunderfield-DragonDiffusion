@@ -1,6 +1,6 @@
 # Dragon Diffusion
 
-![Dragon Diffusion banner](images/banner.png)
+<p align="center"><img src="images/banner.png" alt="Dragon Diffusion banner" width="500"></p>
 
 SDXL has 2.57 billion weights. That is about 2.6 GB even at 8 bit, and a mid range phone cannot keep it in memory, so Android kills the app.
 Normal SDXL also needs 25 to 50 steps for one image, which is far too slow on a phone.
@@ -13,7 +13,7 @@ So we picked a ready model, **SDXL Lightning** (it makes an image in just 4 step
 
 We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)**. The engine is built on Qualcomm's **QNN runtime**, which we modified for our needs. Everything runs on the phone from Termux. No cloud and no PC after setup.
 
-![Snapdragon](images/snap.png)
+<p align="center"><img src="images/snap.png" alt="Snapdragon" width="400"></p>
 
 ## The Dragon Inference Engine
 
@@ -135,8 +135,8 @@ Every run prints the peak RAM of the process, the peak NPU shared memory, and ho
 
 Running on the phone from Termux:
 
-![Dragon Diffusion running on the phone](images/working.png)
+<p align="center"><img src="images/working.png" alt="Dragon Diffusion running on the phone" width="350"></p>
 
 Typing a prompt and getting an image:
 
-![Prompt and generated image in Termux](images/usage.png)
+<p align="center"><img src="images/usage.png" alt="Prompt and generated image in Termux" width="350"></p>
