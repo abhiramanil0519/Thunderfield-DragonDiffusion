@@ -1,6 +1,8 @@
 # Dragon Diffusion
 
-The model SDXL has 2.57 billion weights. That is about 2.6 GB even at 8 bit, and a mid range phone cannot keep it in memory, so Android kills the app.
+![Dragon Diffusion banner](images/banner.png)
+
+SDXL has 2.57 billion weights. That is about 2.6 GB even at 8 bit, and a mid range phone cannot keep it in memory, so Android kills the app.
 Normal SDXL also needs 25 to 50 steps for one image, which is far too slow on a phone.
 
 ## Our idea
@@ -10,6 +12,8 @@ We did not try to change the model. The model is fine. The real problem is the e
 So we picked a ready model, **SDXL Lightning** (it makes an image in just 4 steps), and we worked on the **NPU inference engine** instead.
 
 We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)**. The engine is built on Qualcomm's **QNN runtime**, which we modified for our needs. Everything runs on the phone from Termux. No cloud and no PC after setup.
+
+![Snapdragon](images/snap.png)
 
 ## The Dragon Inference Engine
 
@@ -116,6 +120,10 @@ The text prompt comes in as ready made CLIP outputs: prompt embeddings of shape 
 
 Every step runs the full core at full quality. Our design has a place to reuse the core output between steps. That would skip whole 17 shard passes and save both loading and running time. We do not use it yet.
 
+### 7. What the engine tells us after a run
+
+Every run prints the peak RAM of the process, the peak NPU shared memory, and how much the phone's free memory dropped. Together these show that the full model ran without ever being fully in memory.
+
 ## Results
 
 * The full SDXL Lightning model runs on the phone NPU without ever being fully in memory.
@@ -124,3 +132,11 @@ Every step runs the full core at full quality. Our design has a place to reuse t
 * Output: 1024 × 1024 PNG.
 * Time per image: add your number here
 * Peak RAM: add your number here
+
+Running on the phone from Termux:
+
+![Dragon Diffusion running on the phone](images/working.png)
+
+Typing a prompt and getting an image:
+
+![Prompt and generated image in Termux](images/usage.png)
