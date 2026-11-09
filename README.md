@@ -1,5 +1,3 @@
-# Dragon Diffusion
-
 <p align="center"><img src="images/banner.png" alt="Dragon Diffusion banner" width="800"></p>
 
 SDXL has 2.57 billion weights. That is about 2.6 GB even at 8 bit, and a mid range phone cannot keep it in memory, so Android kills the app.
