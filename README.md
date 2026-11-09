@@ -181,11 +181,17 @@ Peak memory is therefore `190 + 150 + 150 = 490 MB`, which is the ceiling seen i
 
 
 
-Running the Dragon Inference on Snapdragon Hexagon NPU available on phone:
+<table>
+  <tr>
+    <td align="center" valign="top">
+      <b>Running the Dragon Inference on Snapdragon Hexagon NPU available on phone</b><br><br>
+      <img src="images/working.png" alt="Dragon Diffusion running on the phone" width="450">
+    </td>
+    <td align="center" valign="top">
+      <b>Typing a prompt and getting an image</b><br><br>
+      <img src="images/usage.png" alt="Prompt and generated image in Termux" width="300">
+    </td>
+  </tr>
+</table>
 
-<img src="images/working.png" alt="Dragon Diffusion running on the phone" width="550">
-
-Typing a prompt and getting an image:
-
-<p align="center"><img src="images/usage.png" alt="Prompt and generated image in Termux" width="350"></p>
 <p align="center"><img src="images/diff_15b0d0c6.jpg" width="350"></p>
