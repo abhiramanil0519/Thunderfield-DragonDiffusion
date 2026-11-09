@@ -125,17 +125,65 @@ Every step runs the full core at full quality. Our design has a place to reuse t
 Every run prints the peak RAM of the process, the peak NPU shared memory, and how much the phone's free memory dropped. Together these show that the full model ran without ever being fully in memory.
 
 ## Results
+<img src="images/graphs.png" width="100%" alt="Dragon Diffusion memory and streaming overview">
 
-* The full SDXL Lightning model runs on the phone NPU without ever being fully in memory.
-* Memory in use: about 300 MB of core shards plus the 190 MB shell, instead of 2.6 GB.
-* Steps: 4, instead of 25 to 50.
-* Output: 1024 × 1024 PNG.
-* Time per image: add your number here
-* Peak RAM: add your number here
+These plots show how Dragon Diffusion keeps weight memory small while generating an image.
+They are **design models, not measurements**, and the time axes are not to scale.
+
+### (a) Weights in memory while making one image
+
+This plot compares how much model weight data sits in memory over the course of one image, which takes 4 denoising steps.
+
+- **Normal load (grey):** the whole model stays resident the entire time, a flat **2600 MB**.
+- **Dragon Diffusion (red):** only the pieces currently needed are held in memory, so usage never goes above **about 490 MB**.
+
+Each step has the same pattern: memory rises to its peak, holds there while the model's pieces are processed one after another, then dips at the end of the step before the next one starts.
+
+| Approach | Weights in memory |
+|---|---|
+| Normal load | 2600 MB, constant |
+| Dragon Diffusion | ≈ 490 MB peak |
+
+Peak weight memory is roughly **5.3× lower** than a normal load.
+
+### (b) Diffusion cache: weights streamed per image (projection)
+
+Because Dragon Diffusion streams weights instead of keeping them resident, the total amount of weight data moved per image matters. This plot shows how that total grows across the 4 steps under different cache schedules.
+
+- **F** = full core pass. The core's weights are streamed in (about 2.4 GB per pass).
+- **C** = reuse the cached core output. Nothing needs to be streamed for that step.
+
+| Schedule | Meaning | Weights streamed per image |
+|---|---|---|
+| `F F F F` | No cache (what we ran) | 9.5 GB |
+| `F C F C` | Cache on 2 steps | 4.8 GB |
+| `F C C C` | Cache on 3 steps | 2.4 GB |
+
+Each cached step flattens the curve, and the totals roughly halve with each additional pair of cached steps. The cache is a **design hook** that shows where further savings are possible. **It is not used in any of our results.**
+
+### (c) Inside one step: running and loading at the same time
+
+This plot zooms into a single denoising step. The model is split into a **shell** and a series of pieces, `c01` to `c17`, that are processed in order.
+
+- **Shell (190 MB):** always loaded. It covers the entry (`shell_down`) and exit (`shell_up`) parts of the step.
+- **Running shard (up to 150 MB):** the piece currently executing on the NPU.
+- **Next shard (up to 150 MB):** the following piece, loading in the background while the current one runs.
+
+Loading overlaps with compute, so the NPU does not stall waiting for weights. The step starts by preloading the first shard during `shell_down`. It then holds at peak memory through `c01`–`c16`, since one shard runs while the next loads. At `c17` there is nothing left to preload, so memory drops, and it falls back to the shell alone at `shell_up`.
+
+Peak memory is therefore `190 + 150 + 150 = 490 MB`, which is the ceiling seen in panel (a).
+
+
+
+
+
+
+
+
 
 Running the Dragon Inference on Snapdragon Hexagon NPU available on phone:
 
-<p align="center"><img src="images/working.png" alt="Dragon Diffusion running on the phone" width="550"></p>
+<img src="images/working.png" alt="Dragon Diffusion running on the phone" width="550">
 
 Typing a prompt and getting an image:
 
