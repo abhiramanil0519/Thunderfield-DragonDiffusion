@@ -14,7 +14,7 @@ We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)** on a **Moto
 <p align="center">
   <img src="images/snap.png" width="500">
   &nbsp;&nbsp;
-  <img src="images/npu.png" width="140">
+  <img src="images/npu.png" width="145">
 </p>
 
 ## The Dragon Inference Engine
