@@ -196,8 +196,7 @@ Peak memory is therefore `190 + 150 + 150 = 490 MB`, which is the ceiling seen i
     <td align="center" valign="top">
       <b>Typing a prompt and getting an image</b><br><br>
       <img src="images/usage.png" alt="Prompt and generated image in Termux" width="300">
+      <img src="images/diff_15b0d0c6.jpg" width="200">
     </td>
   </tr>
 </table>
-
-<p align="center"><img src="images/diff_15b0d0c6.jpg" width="150"></p>
