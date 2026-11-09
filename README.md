@@ -13,6 +13,12 @@ We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)**. The engine
 
 <p align="center"><img src="images/snap.png" alt="Snapdragon" width="600"></p>
 
+<p align="center">
+  <img src="images/snap.png" width="450">
+  &nbsp;&nbsp;
+  <img src="images/npu.png" width="300">
+</p>
+
 ## The Dragon Inference Engine
 
 ### The big idea
