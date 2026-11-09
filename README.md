@@ -9,7 +9,7 @@ We did not try to change the model. The model is fine. The real problem is the e
 
 So we picked a ready model, **SDXL Lightning** (it makes an image in just 4 steps), and we worked on the **NPU inference engine** instead.
 
-We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)** on a **Motorola MOTO G67 POWER 5G**. The engine is built on Qualcomm's **QNN runtime**, which we modified for our needs. Everything runs on the phone from Termux. No cloud and no PC after setup.
+We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)** on a **Motorola MOTO G67 POWER 5G**. The engine is built on **Qualcomm's QNN runtime**, which we modified for our needs. Everything runs on the phone from Termux. No cloud and no PC after setup.
 
 <p align="center">
   <img src="images/snap.png" width="500">
