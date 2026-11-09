@@ -197,4 +197,4 @@ Peak memory is therefore `190 + 150 + 150 = 490 MB`, which is the ceiling seen i
   </tr>
 </table>
 
-<p align="center"><img src="images/diff_15b0d0c6.jpg" width="350"></p>
+<p align="center"><img src="images/diff_15b0d0c6.jpg" width="150"></p>
