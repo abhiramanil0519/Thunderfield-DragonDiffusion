@@ -124,6 +124,9 @@ Every step runs the full core at full quality. Our design has a place to reuse t
 
 Every run prints the peak RAM of the process, the peak NPU shared memory, and how much the phone's free memory dropped. Together these show that the full model ran without ever being fully in memory.
 
+
+
+
 ## Results
 <img src="images/graphs.png" width="100%" alt="Dragon Diffusion memory and streaming overview">
 
