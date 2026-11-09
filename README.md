@@ -63,11 +63,11 @@ Two things here matter a lot.
 
 **A context binary is already in the form the NPU wants.** So on the phone, loading a shard is only reading a ready file. There is nothing to compile. This is why streaming works. Loading is cheap enough that we can do it 68 times for one image.
 
-### 3. How we handle the working data: one planned memory block
+### 3. How we handle the working data
 
 All the activations, skip tensors, text data and the latent live in **one block of shared memory (rpcmem)**. We allocate it once at the start and register it with QNN. Each context binary reads its inputs from this block and writes its outputs back into it, at fixed positions.
 
-**How we plan it.** The graph and shapes are fixed, so we know exactly when each tensor is first used and when it is last used. That is its lifetime. We then place the tensors in the block like bars on a timeline. If two tensors are never alive at the same time, they can use the same bytes. So the size of the block is set by the most data alive at one moment, not by the total of all tensors.
+The graph and shapes are fixed, so we know exactly when each tensor is first used and when it is last used. That is its lifetime. We then place the tensors in the block like bars on a timeline. If two tensors are never alive at the same time, they can use the same bytes. So the size of the block is set by the most data alive at one moment, not by the total of all tensors.
 
 The tensors fall into three groups:
 
