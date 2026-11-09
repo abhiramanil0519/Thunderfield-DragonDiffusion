@@ -11,10 +11,8 @@ So we picked a ready model, **SDXL Lightning** (it makes an image in just 4 step
 
 We run on the **Snapdragon SM7435**, using its **Hexagon NPU (HTP)**. The engine is built on Qualcomm's **QNN runtime**, which we modified for our needs. Everything runs on the phone from Termux. No cloud and no PC after setup.
 
-<p align="center"><img src="images/snap.png" alt="Snapdragon" width="600"></p>
-
 <p align="center">
-  <img src="images/snap.png" width="450">
+  <img src="images/snap.png" width="500">
   &nbsp;&nbsp;
   <img src="images/npu.png" width="300">
 </p>
